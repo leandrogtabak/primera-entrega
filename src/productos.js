@@ -2,7 +2,7 @@ const { Contenedor } = require('./handleFiles');
 const express = require('express');
 const { Router } = express;
 
-const listProducts = new Contenedor('../productos.json');
+const listProducts = new Contenedor('./productos.json'); //no se por que con un solo . anda con el script de npm run start y con los .. con node o nodemon directamente...
 const routerProducts = Router();
 
 const authorize = true;
