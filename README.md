@@ -1,6 +1,6 @@
 # Primera entrega del proyecto final
 
-## Ver implementacion en: <a href="http://probable-humorous-passive.glitch.me/">
+## Ver implementacion en [Glitch](http://probable-humorous-passive.glitch.me)
 
 ### Consignas
 
