@@ -3,7 +3,7 @@ const express = require('express');
 const { Router } = express;
 const { authorize } = require('../Middleware/checkAuth.middleware.js');
 
-const listProducts = new Contenedor('./productos.json'); //no se por que con un solo . anda con el script de npm run start (glitch) y con los .. con node o nodemon directamente...
+const listProducts = new Contenedor('productos.json');
 const routerProducts = Router();
 
 const authorizeMiddle = (metodo) => {
