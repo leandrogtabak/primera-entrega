@@ -5,6 +5,7 @@ class Contenedor {
     this.myFile = myFile;
     this.id = 1;
     this.listProductsOnFile = [];
+    this.listCartsOnFile = [];
   }
 
   async save(myObject) {
@@ -28,6 +29,31 @@ class Contenedor {
         this.listProductsOnFile.push({ id: this.id, timestamp: Date.now(), ...myObject });
       }
       await fs.promises.writeFile(this.myFile, `${JSON.stringify(this.listProductsOnFile)}`);
+      return this.id;
+    } catch (err) {
+      console.log('Error de escritura: ', err);
+    }
+  }
+  async saveCart() {
+    try {
+      let content;
+
+      if (fs.existsSync(this.myFile)) {
+        content = await fs.promises.readFile(this.myFile, 'utf-8');
+      } else {
+        content = await fs.promises.writeFile(this.myFile, '');
+      }
+
+      if (content && content.length > 0) {
+        //if json file contains carts...
+        this.listCartsOnFile = await JSON.parse(content);
+        this.id = this.listCartsOnFile[this.listCartsOnFile.length - 1].id + 1;
+        this.listCartsOnFile.push({ id: this.id, timestamp: Date.now(), productos: [] });
+      } else {
+        //if json file is empty...
+        this.listCartsOnFile.push({ id: this.id, timestamp: Date.now(), productos: [] });
+      }
+      await fs.promises.writeFile(this.myFile, `${JSON.stringify(this.listCartsOnFile)}`);
       return this.id;
     } catch (err) {
       console.log('Error de escritura: ', err);

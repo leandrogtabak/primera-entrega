@@ -10,9 +10,9 @@ const routerCart = Router();
 routerCart.post('/', async (req, res) => {
   console.log('Post carrito received OK');
   try {
-    const carritoACargar = req.body;
-    const id = await listCarrito.save(carritoACargar);
-    res.status(201).send(carritoACargar);
+    // const carritoACargar = req.body;
+    const id = await listCarrito.saveCart();
+    res.status(201).send({ id: id });
   } catch (e) {
     console.log(e);
   }
@@ -65,7 +65,7 @@ routerCart.post('/:id/productos', async (req, res) => {
       const carritos = await listCarrito.updateById(id, listProductos);
       res.status(201).send(carritos);
     } else {
-      res.status(400).send({ error: 'producto no encontrado' });
+      res.status(400).send({ error: 'carrito no encontrado' });
     }
   } catch (e) {
     console.log(e);
