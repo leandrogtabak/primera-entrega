@@ -1,6 +1,6 @@
 # Primera entrega del proyecto final
 
-## Ver implementacion en [Glitch](hhttp://whip-golden-composer.glitch.me/)
+## Ver implementacion en [Glitch](http://whip-golden-composer.glitch.me/)
 
 ### Consignas
 
