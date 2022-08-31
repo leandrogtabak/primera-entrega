@@ -48,11 +48,10 @@ class Contenedor {
         //if json file contains carts...
         this.listCartsOnFile = await JSON.parse(content);
         this.id = this.listCartsOnFile[this.listCartsOnFile.length - 1].id + 1;
-        this.listCartsOnFile.push({ id: this.id, timestamp: Date.now(), productos: [] });
-      } else {
-        //if json file is empty...
-        this.listCartsOnFile.push({ id: this.id, timestamp: Date.now(), productos: [] });
       }
+      //if json file is empty...
+      this.listCartsOnFile.push({ id: this.id, timestamp: Date.now(), productos: [] });
+
       await fs.promises.writeFile(this.myFile, `${JSON.stringify(this.listCartsOnFile)}`);
       return this.id;
     } catch (err) {
